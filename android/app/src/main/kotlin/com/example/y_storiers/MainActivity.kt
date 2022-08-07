@@ -1,4 +1,4 @@
-package com.example.y_storiers
+package com.broseph.stories
 
 import io.flutter.embedding.android.FlutterActivity
 
