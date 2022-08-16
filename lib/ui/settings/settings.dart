@@ -528,6 +528,9 @@ class _SettingsPageState extends State<SettingsPage> {
                   mode: CupertinoDatePickerMode.date,
                   dateOrder: DatePickerDateOrder.dmy,
                   use24hFormat: true,
+                  minimumYear: 1920,
+                  maximumYear: DateTime.now().year,
+                  // minimumDate: DateTime(1920, 1, 1),
                   initialDateTime: _birthday.isNotEmpty
                       ? DateTime(
                           int.parse(
@@ -543,11 +546,11 @@ class _SettingsPageState extends State<SettingsPage> {
                       : DateTime.now(),
                   onDateTimeChanged: (val) {
                     // print(val);
-                    setState(() {
-                      // _chosenDateTime = val;
-                      _birthday =
-                          val.toString().substring(0, 11).replaceAll('-', '/');
-                    });
+                    // setState(() {
+                    // _chosenDateTime = val;
+                    _birthday =
+                        val.toString().substring(0, 11).replaceAll('-', '/');
+                    // });
                   }),
             ),
             Material(
@@ -557,10 +560,9 @@ class _SettingsPageState extends State<SettingsPage> {
                 child: GestureDetector(
                   onTap: () {
                     if (_birthday == '') {
-                      setState(() {
-                        _birthday = DateTime.now().toString().substring(0, 11);
-                      });
+                      _birthday = DateTime.now().toString().substring(0, 11);
                     }
+                    setState(() {});
                     Navigator.of(context, rootNavigator: true).pop("1");
                   },
                   child: const Text(
@@ -573,6 +575,8 @@ class _SettingsPageState extends State<SettingsPage> {
           ],
         ),
       ),
-    );
+    ).then((value) {
+      setState(() {});
+    });
   }
 }

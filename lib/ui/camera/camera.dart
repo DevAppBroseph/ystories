@@ -56,12 +56,14 @@ class _CameraPageState extends State<CameraPage> with WidgetsBindingObserver {
 
   @override
   void didChangeDependencies() {
-    print(MediaQuery.of(context).orientation);
-    if (MediaQuery.of(context).orientation == Orientation.portrait) {
-      _setCamera(null);
-    } else {
-      SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
-      _setCamera(null);
+    if (!_streamController.hasListener) {
+      print(MediaQuery.of(context).orientation);
+      if (MediaQuery.of(context).orientation == Orientation.portrait) {
+        _setCamera(null);
+      } else {
+        SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+        _setCamera(null);
+      }
     }
 
     super.didChangeDependencies();
@@ -473,11 +475,11 @@ class _CameraPageState extends State<CameraPage> with WidgetsBindingObserver {
                   isTimerTextShown: false,
                   neumorphicEffect: false,
                   strokeWidth: 6,
-                  innerFillGradient: LinearGradient(colors: [
+                  innerFillGradient: const LinearGradient(colors: [
                     Color.fromRGBO(253, 29, 29, 1),
                     Color.fromRGBO(247, 119, 55, 1),
                   ]),
-                  neonGradient: LinearGradient(colors: [
+                  neonGradient: const LinearGradient(colors: [
                     Color.fromRGBO(247, 119, 55, 1),
                     Color.fromRGBO(253, 29, 29, 1),
                   ]),

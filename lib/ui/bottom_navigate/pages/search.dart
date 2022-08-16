@@ -179,12 +179,17 @@ class _SearchPageState extends State<SearchPage>
                             ),
                           ),
                         if (!_search)
-                          const SliverToBoxAdapter(
-                            child: Padding(
-                              padding: const EdgeInsets.all(30.0),
-                              child: CircularProgressIndicator.adaptive(),
+                          SliverToBoxAdapter(
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Container(
+                                  margin: const EdgeInsets.all(20.0),
+                                  child: CircularProgressIndicator.adaptive(),
+                                ),
+                              ],
                             ),
-                          )
+                          ),
                       ],
                     )
                   : Center(

@@ -65,16 +65,21 @@ class PostImage extends StatelessWidget {
                 value = progress.cumulativeBytesLoaded /
                     progress.expectedTotalBytes!;
               }
-              return Container(
-                margin: EdgeInsets.all(175),
-                height: 10,
-                width: 10,
-                child: CircleProgressBar(
-                  foregroundColor: Colors.white,
-                  backgroundColor: Colors.grey[400],
-                  strokeWidth: 2,
-                  value: value ?? 0.8,
-                ),
+              return Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    // margin: EdgeInsets.all(175),
+                    height: 70,
+                    width: 70,
+                    child: CircleProgressBar(
+                      foregroundColor: Colors.white,
+                      backgroundColor: Colors.grey[400],
+                      strokeWidth: 2,
+                      value: value ?? 0.8,
+                    ),
+                  ),
+                ],
               );
             },
           ),

@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/gestures.dart';
@@ -248,7 +249,11 @@ class _NavigateControlState extends State<NavigateControl>
                   builder: (context, snapshot) {
                     return AnimatedContainer(
                       duration: Duration(milliseconds: 100),
-                      height: !provider.isPauseVideo ? 100 : 0,
+                      height: !provider.isPauseVideo
+                          ? Platform.isAndroid
+                              ? 70
+                              : 100
+                          : 0,
                       child: BottomNavigationBar(
                         showSelectedLabels: false,
                         showUnselectedLabels: false,

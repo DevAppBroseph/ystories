@@ -55,6 +55,7 @@ class Repository {
   Future<dynamic> checkAvaibleName(String name) async {
     try {
       d.Response response = await dio.post("users/check_nickname/$name");
+      print(response.data);
       return CheckName.fromJson(response.data);
     } catch (e) {
       return false;
